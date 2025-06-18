@@ -124,7 +124,7 @@ Compte et affiche le nombre de voyelles (a, e, i, o, u, y).
 Déclare une variable `$mot = 'radar';`. Vérifie si ce mot est un palindrome (se lit dans les deux sens).
 Affiche un message selon le résultat.
 
-💡 **Fonctions utiles** : `strtolower()`, `explode()`, comparaison avec `==`
+💡 **Fonctions utiles** : `strtolower()`, comparaison avec `==`
 
 ---
 
