@@ -1,4 +1,4 @@
-## Exercice 6 : Afficher dynamiquement des personnages Harry Potter avec Bootstrap et JSON
+## Exercice 11 : Afficher dynamiquement des personnages Harry Potter avec Bootstrap et JSON
 
 Tu vas créer une page PHP qui récupère des données depuis une **API externe**, les transforme en **tableau PHP**, puis les affiche sous forme de **cartes Bootstrap** joliment mises en page.
 
