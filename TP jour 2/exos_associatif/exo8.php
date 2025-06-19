@@ -9,7 +9,7 @@ $personne = [
 
 ?>
 
-<table border = 1rem solid>
+<table>
     <?php foreach ($personne as $key => $value) : ?>
     <tr>
         <td><?=$key?></td>
