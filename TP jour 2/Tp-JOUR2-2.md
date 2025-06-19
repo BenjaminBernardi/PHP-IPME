@@ -1,4 +1,4 @@
-## Exercice 1 : Afficher un titre HTML avec une variable
+## Exercice 6 : Afficher un titre HTML avec une variable
 
 Déclare une variable PHP `$titre = "Bienvenue sur mon site";`.  
 Écris un script qui affiche ce texte dans une balise `<h1>` HTML.
@@ -7,7 +7,7 @@ Déclare une variable PHP `$titre = "Bienvenue sur mon site";`.
 
 ---
 
-## Exercice 2 : Afficher une liste HTML à partir d’un tableau simple
+## Exercice 7 : Afficher une liste HTML à partir d’un tableau simple
 
 Déclare un tableau `$fruits = ['Pomme', 'Banane', 'Cerise'];`.  
 Écris un script PHP qui génère une liste HTML `<ul>` contenant chaque fruit dans une `<li>`.
@@ -16,7 +16,7 @@ Déclare un tableau `$fruits = ['Pomme', 'Banane', 'Cerise'];`.
 
 ---
 
-## Exercice 3 : Afficher un tableau HTML à partir d’un tableau associatif
+## Exercice 8 : Afficher un tableau HTML à partir d’un tableau associatif
 
 Voici un tableau associatif à copier-coller :
 ```php
@@ -34,7 +34,7 @@ $personne = [
 
 ---
 
-## Exercice 4 : Afficher une liste HTML avec conditions (`if` / `endif`)
+## Exercice 9 : Afficher une liste HTML avec conditions (`if` / `endif`)
 
 Voici un tableau associatif :
 ```php
@@ -58,7 +58,7 @@ endif;
 
 ---
 
-## Exercice 5 : Générer un menu de navigation HTML dynamique avec tableau associatif contenant labels et URLs
+## Exercice 10 : Générer un menu de navigation HTML dynamique avec tableau associatif contenant labels et URLs
 
 Voici un tableau associatif représentant un menu, où chaque clé est le label du lien, et la valeur est l’URL correspondante :
 ```php
