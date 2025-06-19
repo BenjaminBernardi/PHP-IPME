@@ -1,0 +1,7 @@
+// Dans le terminal, vérifier que php est correctement installé
+
+> php --version
+
+// Se placer à la racine de index.php, puis lancer la commande suivante
+
+> php -S localhost:8080
