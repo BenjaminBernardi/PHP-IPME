@@ -68,7 +68,7 @@ Tu auras **deux fichiers PHP** :
    Tu peux afficher :
     - Son **titre**
     - Son **image**
-    - Son **description**
+    - Sa **description**
     - Sa **date de sortie**
     - Son **score Rotten Tomatoes**
     - Et toute autre information utile présente dans l’objet retourné
