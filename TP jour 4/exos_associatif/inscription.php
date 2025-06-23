@@ -31,8 +31,8 @@
 
 <?php if (isset($_POST["full-name"]) && $_POST["full-name"] != "" && isset($_POST["genre"]) && isset($_POST["checkbox"]) && isset($_POST["bio"]) && $_POST["bio"] != "") : ?>
     <p>Bonjour, <?= htmlspecialchars($_POST["full-name"]) ?></p>
-    <p>Vous êtes <?= $_POST["genre"][0] ?> et vous aimez coder en :<?php foreach ($_POST["checkbox"] as $items) {
-            echo " " . $items;
+    <p>Vous êtes <?= htmlspecialchars($_POST["genre"][0]) ?> et vous aimez coder en :<?php foreach ($_POST["checkbox"] as $items) {
+            echo " " . htmlspecialchars($items);
         } ?>.</p>
     <p>Voici ce que vous avez écrit à propos de vous :</p>
     <p><?= htmlspecialchars($_POST["bio"]) ?></p>
