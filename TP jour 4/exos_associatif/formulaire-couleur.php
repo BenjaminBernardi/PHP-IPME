@@ -10,8 +10,7 @@
     <button type="submit">Valider</button>
 </form>
 
-<?php
-if (isset($_POST['prenom']) && $_POST['prenom'] != "" && isset($_POST['couleur'])) : ?>
+<?php if (isset($_POST['prenom']) && $_POST['prenom'] != "" && isset($_POST['couleur'])) : ?>
     <body style="background-color: <?=htmlspecialchars($_POST['couleur'])?>">
     <p>Bonjour, <?= htmlspecialchars($_POST['prenom']) ?>!</p>
     <p>Ta couleur préférée est le <?= htmlspecialchars($_POST['couleur']) ?>.</p>
