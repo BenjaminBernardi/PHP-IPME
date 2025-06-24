@@ -8,3 +8,5 @@ if (isset($_SESSION["user"])) {
     echo "Vous n'êtes pas connecté.";
 }
 ?>
+
+<button><a href="disconnect.php">Se déconnecter</a></button>
