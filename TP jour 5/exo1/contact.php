@@ -4,9 +4,12 @@ session_start();
 if (isset($_SESSION["contact"])) {
     $_SESSION["contact"] = $_SESSION["contact"] + 1;
 } else {
-    $_SESSION["contact"] = 0;
+    $_SESSION["contact"] = 1;
 }
 
-echo $_SESSION["contact"];
 var_dump($_SESSION);
 ?>
+
+<a href="accueil.php">Page accueil</a>
+<a href="test.php">Page test</a>
+<a href="random.php">Page random</a>
