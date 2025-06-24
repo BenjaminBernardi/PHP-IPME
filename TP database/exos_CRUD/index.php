@@ -4,7 +4,6 @@ $pdo = new PDO(
     'root',
     ''
 );
-var_dump($pdo);
 
 $sql = "SELECT * FROM game";
 $stmt = $pdo->prepare($sql);
@@ -23,4 +22,17 @@ var_dump($games);
         <th>Rating</th>
         <th>Action</th>
     </tr>
+    <?php foreach ($games as $game) : ?>
+    <tr>
+        <td><?= $game["title"] ?></td>
+        <td><?= $game["genre"] ?></td>
+        <td><?= $game["platform"] ?></td>
+        <td><?= $game["rating"] ?></td>
+        <td>
+            <a href=<?= "item.php?id=" . $game["id"] ?>><button type="button">Voir</button></a>
+            <a href=<?= "edit.php?id=" . $game["id"] ?>><button type="button">Modifier</button></a>
+            <a href=<?= "delete.php?id=" . $game["id"] ?>><button type="button">Supprimer</button></a>
+        </td>
+    </tr>
+    <?php endforeach; ?>
 </table>
