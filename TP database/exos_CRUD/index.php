@@ -24,17 +24,21 @@ $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <td>
             <a href=<?= "item.php?id=" . $game["id"] ?>><button type="button">Voir</button></a>
             <a href=<?= "edit.php?id=" . $game["id"] ?>><button type="button">Modifier</button></a>
-            <a href=<?= "delete.php?id=" . $game["id"] ?>><button type="button">Supprimer</button></a>
+            <a href=<?= "delete.php?id=" . $game["id"] ?> onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce jeu ?')">
+            <button type="button">Supprimer</button></a>
         </td>
     </tr>
     <?php endforeach; ?>
 </table>
 
 <?php if (isset($_GET["success"]) && $_GET["success"] == 1) {
-    $message = "Jeu ajouté avec succès !";
+    $message = "✅ Jeu ajouté avec succès !";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+} elseif (isset($_GET["updated"]) && $_GET["updated"] == 1) {
+    $message = "✏️ Jeu modifié avec succès !";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+} elseif (isset($_GET["deleted"]) && $_GET["deleted"] == 1) {
+    $message = "🗑️ Jeu supprimé avec succès !";
     echo "<script type='text/javascript'>alert('$message');</script>";
 }
-
-var_dump($games);
-
 ?>
