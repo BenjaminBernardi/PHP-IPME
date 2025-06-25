@@ -24,7 +24,7 @@ $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <td>
             <a href=<?= "item.php?id=" . $game["id"] ?>><button type="button">Voir</button></a>
             <a href=<?= "edit.php?id=" . $game["id"] ?>><button type="button">Modifier</button></a>
-            <a href=<?= "delete.php?id=" . $game["id"] ?> onclick="return confirm('Êtes-vous sûrs de vouloir supprimer ce jeu ?')">
+            <a href=<?= "delete.php?id=" . $game["id"] ?> onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce jeu ?')">
             <button type="button">Supprimer</button></a>
         </td>
     </tr>
