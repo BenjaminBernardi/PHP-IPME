@@ -1,17 +1,10 @@
 <?php
-$pdo = new PDO(
-    'mysql:host=localhost;dbname=mygames;charset=utf8',
-    'root',
-    ''
-);
+include "pdo.php";
 
 $sql = "SELECT * FROM game";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-var_dump($games);
-
 ?>
 
 <table>
@@ -36,3 +29,12 @@ var_dump($games);
     </tr>
     <?php endforeach; ?>
 </table>
+
+<?php if (isset($_GET["success"]) && $_GET["success"] == 1) {
+    $message = "Jeu ajouté avec succès !";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+}
+
+var_dump($games);
+
+?>

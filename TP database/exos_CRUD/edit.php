@@ -1,9 +1,5 @@
 <?php
-$pdo = new PDO(
-    'mysql:host=localhost;dbname=mygames;charset=utf8',
-    'root',
-    ''
-);
+include "pdo.php";
 
 if (isset($_GET["id"]) && $_GET["id"] != "") {
     $sql = "SELECT * FROM game WHERE id = :id";
@@ -14,10 +10,39 @@ if (isset($_GET["id"]) && $_GET["id"] != "") {
 ?>
 
 <form method="get">
-    <textarea type="text" name="title"><?= $game["title"] ?></textarea>
-    <textarea type="text" name="genre"><?= $game["genre"] ?></textarea>
-    <textarea type="text" name="platform"><?= $game["platform"] ?></textarea>
-    <textarea type="text" name="rating"><?= $game["rating"] ?></textarea>
+    <div>
+        <label>Title: </label>
+        <textarea type="text" name="title" required><?= $game["title"] ?></textarea>
+    </div>
+    <div>
+        <label>Genre: </label>
+        <textarea type="text" name="genre" required><?= $game["genre"] ?></textarea>
+    </div>
+    <div>
+        <label>Platform: </label>
+        <textarea type="text" name="platform" required><?= $game["platform"] ?></textarea>
+    </div>
+    <div>
+        <label>Rating: </label>
+        <textarea type="text" name="rating" required><?= $game["rating"] ?></textarea>
+    </div>
+    <input type="submit" value="Modifier un jeu">
 </form>
 
-<a href="index.php"><button type="button">Retour à la liste des jeux</button></a>
+<?php
+if (isset($_GET["title"]) && isset($_GET["genre"]) && isset($_GET["platform"]) && isset($_GET["rating"])) {
+$sql = "UPDATE game SET title = :title, genre = :genre, platform = :platform, rating = :rating WHERE id = :id";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([
+    'title' => $_GET["title"],
+    'genre' => $_GET["genre"],
+    'platform' => $_GET["platform"],
+    'rating' => $_GET["rating"],
+    'id' =>
+]);
+}
+?>
+
+<a href="index.php">
+    <button type="button">Retour à la liste des jeux</button>
+</a>

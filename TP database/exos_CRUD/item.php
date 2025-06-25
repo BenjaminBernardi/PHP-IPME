@@ -1,9 +1,5 @@
 <?php
-$pdo = new PDO(
-    'mysql:host=localhost;dbname=mygames;charset=utf8',
-    'root',
-    ''
-);
+include "pdo.php";
 
 if (isset($_GET["id"]) && $_GET["id"] != "") {
     $sql = "SELECT * FROM game WHERE id = :id";
