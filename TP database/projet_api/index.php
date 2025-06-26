@@ -4,6 +4,7 @@ include "pdo.php";
 
 if (isset($_GET["standard_state"]) && $_GET["standard_state"] != "") {
     $sql = "SELECT * FROM elements WHERE standard_state = '" . $_GET["standard_state"] . "' ORDER BY atomic_number";
+    $sql = addSqlOrderBy($sql);
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $elements = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -24,7 +25,13 @@ if (isset($_GET["standard_state"]) && $_GET["standard_state"] != "") {
     $elements = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+/*function addSqlOrderBy($sql){
+    if(isset($_GET[''])){
+        $sql .= ""
+    }
 
+    return $sql;
+}*/
 // recuperer les éléments de group_block :
 $sql = "SELECT group_block, count(*) FROM elements GROUP BY group_block";
 $stmt = $pdo->prepare($sql);
@@ -53,6 +60,14 @@ foreach ($groupBlock as $group) {
         <div class="form-style">
             <input type="submit" class="btn btn-warning" value="Search an element">
         </div>
+
+
+
+        <input id="toto" type="text" name="year-order" hidden>
+
+
+
+
         <div class="form-style">
             <a href="index.php?standard_state=gas">
                 <button type="button" class="btn btn-primary">Show gas elements</button>
@@ -69,7 +84,7 @@ foreach ($groupBlock as $group) {
         </div>
     </form>
 
-<?php if (count($elements) > 0) : ?>
+<?php if (count($elements) > 0) : echo $sql; ?>
     <table class="table">
         <tr>
             <th>Name</th>
