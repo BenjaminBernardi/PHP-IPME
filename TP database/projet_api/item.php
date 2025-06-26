@@ -1,4 +1,5 @@
 <?php
+include "header.php";
 include "pdo.php";
 
 if (isset($_GET["id"]) && $_GET["id"] != "") {
@@ -9,45 +10,47 @@ if (isset($_GET["id"]) && $_GET["id"] != "") {
 }
 
 if ($element != false) : ?>
-    <h2><?= $element["name"] ?></h2>
-    <h3>Symbol: <?= $element["symbol"] ?></h3>
-    <p>Atomic number: <?= $element["atomic_number"] ?></p>
-    <p>Standard state: <?php if ($element["standard_state"] != "") {
+    <h1 class="h1"><?= $element["name"] ?></h1>
+    <h4 class="h4">Symbol: <?= $element["symbol"] ?></h4>
+    <p class="lead">Atomic number: <?= $element["atomic_number"] ?></p>
+    <p class="lead">Standard state: <?php if ($element["standard_state"] != "") {
             echo $element["standard_state"];
         } else {
             echo "undefined";
         } ?></p>
-    <p>Year discovered: <?php if ($element["year_discovered"] != "") {
+    <p class="lead">Year discovered: <?php if ($element["year_discovered"] != "") {
             echo $element["year_discovered"];
         } else {
             echo "undefined";
         } ?></p>
-    <p>Group block: <?php if ($element["group_block"] != "") {
+    <p class="lead">Group block: <?php if ($element["group_block"] != "") {
             echo $element["group_block"];
         } else {
             echo "undefined";
         } ?></p>
-    <p>Atomic mass: <?php if ($element["atomic_mass"] != "") {
+    <p class="lead">Atomic mass: <?php if ($element["atomic_mass"] != "") {
             echo $element["atomic_mass"];
         } else {
             echo "undefined";
         } ?></p>
-    <p>Bonding type: <?php if ($element["bonding_type"] != "") {
+    <p class="lead">Bonding type: <?php if ($element["bonding_type"] != "") {
             echo $element["bonding_type"];
         } else {
             echo "undefined";
         } ?></p>
-    <p>Density: <?php if ($element["density"] != "") {
+    <p class="lead">Density: <?php if ($element["density"] != "") {
             echo $element["density"];
         } else {
             echo "undefined";
         } ?></p>
 
 <?php else : ?>
-    <h1>⚠️ Erreur : Cet élément n'existe pas dans la base.</h1>
+    <h1 class="h1">⚠️ Erreur : Cet élément n'existe pas dans la base.</h1>
 
 <?php endif; ?>
 
 <a href="index.php">
-    <button type="button">Retour à la liste des éléments</button>
+    <button type="button" class="btn btn-primary">Return to list of items</button>
 </a>
+
+<?php include "footer.php"; ?>
