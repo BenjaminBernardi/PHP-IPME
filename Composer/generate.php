@@ -5,12 +5,33 @@ $pdo = new PDO(
     ''
 );
 
-$counter = 0;
+require 'vendor/autoload.php';
+$faker = Faker\Factory::create('fr_FR');
 
-if ($counter <= 500) {
-    require 'vendor/autoload.php';
+$sql = "TRUNCATE TABLE products";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
 
-    $faker = Faker\Factory::create('fr_FR');
-    $test = $faker->name();
-    $mail = $faker->email();
+for ($i = 0; $i < 500; $i++) {
+    $name = $faker->words(3, true);
+    $description = $faker->text();
+    $price = $faker->randomFloat(2, 5, 500);
+    $isAvailable = $faker->boolean(80);
+    $createdAt = $faker->dateTimeBetween('-2 years', '-1 month')->format('Y-m-d H:i:s');
+    $updatedAt = $faker->dateTimeBetween('-1 month', 'now')->format('Y-m-d H:i:s');
+    $category = $faker->randomElement(['Books', 'Electronics', 'Toys', 'Clothing', 'Furniture']);
+    $image = $faker->imageUrl();
+
+    $sql = "INSERT INTO products (name, description, price, is_available, created_at, updated_at, category, image_url) VALUES (:name, :description, :price, :is_available, :created_at, :updated_at, :category, :image_url)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        'name' => $name,
+        'description' => $description,
+        'price' => $price,
+        'is_available' => $isAvailable,
+        'created_at' => $createdAt,
+        'updated_at' => $updatedAt,
+        'category' => $category,
+        'image_url' => $image
+    ]);
 }
