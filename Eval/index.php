@@ -5,6 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+            crossorigin="anonymous"></script>
     <title>Gestion de maisons</title>
 </head>
 <body>
@@ -32,26 +37,37 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $elements = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$sql = "SELECT COUNT(*) AS nb_maisons FROM maison";
-$stmt = $pdo->prepare($sql);
-$nbMaisons = $stmt->execute();
-
+$nbMaisons = 0;
+$prixTotal = 0;
 ?>
-<table class="table">
-    <tr>
-        <th>Nom</th>
-        <th>Adresse</th>
-        <th>Nombre de pièces</th>
-        <th>Prix</th>
-    </tr>
-    <?php foreach ($elements as $element) : ?>
+
+<div class="container">
+    <h1 class="text-center">Gestion de maisons</h1>
+    <table class="table">
         <tr>
-            <td><?= htmlspecialchars($element["nom"]) ?></td>
-            <td><?= htmlspecialchars($element["adresse"]) ?></td>
-            <td><?= htmlspecialchars($element["nb_pieces"]) ?></td>
-            <td><?= htmlspecialchars($element["prix"]) ?></td>
+            <th>Nom</th>
+            <th>Adresse</th>
+            <th>Nombre de pièces</th>
+            <th>Prix</th>
         </tr>
-    <?php endforeach; ?>
-</table>
+        <?php foreach ($elements as $element) : ?>
+            <tr>
+                <td><?= htmlspecialchars($element["nom"]) ?></td>
+                <td><?= htmlspecialchars($element["adresse"]) ?></td>
+                <td><?= htmlspecialchars($element["nb_pieces"]) ?></td>
+                <td><?= htmlspecialchars(number_format($element["prix"], 0, ",", " ")) ?> €</td>
+            </tr>
+            <?php
+            $nbMaisons++;
+            $prixTotal += $element["prix"];
+        endforeach;
+        ?>
+    </table>
+    <p class="lead">Nombre total de maisons: <?= $nbMaisons ?></p>
+    <p class="lead">Somme des maisons: <?= number_format($prixTotal, 0, ",", " ") ?> €</p>
+    <a href=ajout.php>
+        <button type="button" class="btn btn-primary">Ajouter une maison</button>
+    </a>
+</div>
 </body>
 </html>
